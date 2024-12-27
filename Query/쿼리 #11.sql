@@ -1,0 +1,45 @@
+CREATE TABLE item(
+	item_id INT PRIMARY KEY AUTO_INCREMENT,
+	item_name VARCHAR(100) NOT NULL,
+	price INT NOT NULL,
+	stock_number INT NOT NULL,
+	item_detail TEXT,
+	item_sell_status VARCHAR(30) NOT NULL,
+	reg_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	update_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO item(item_name, price, stock_number, item_detail, item_sell_status)
+VALUES("상품1",10000,10,"장난감","SELL");
+
+CREATE TABLE MEMBER(
+	member_id INT PRIMARY KEY AUTO_INCREMENT,
+	id VARCHAR(30) NOT NULL UNIQUE,
+	PASSWORD VARCHAR(100) NOT NULL,
+	NAME VARCHAR(30) NOT NULL,
+	email VARCHAR(50) UNIQUE,
+	address VARCHAR(200),memberpythondb
+	ROLE VARCHAR(30),
+	oauth VARCHAR(30) DEFAULT 'GREEN',
+	reg_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	update_time DATETIME DEFAULT CURRENT_TIMESTAMP
+
+);
+
+INSERT INTO MEMBER(id, PASSWORD, NAME, email, address, ROLE)
+VALUES('test1','1234','김그린','test1@naver.com','울산','USER');
+
+CREATE TABLE fire(
+	소방서센터명 VARCHAR(100),
+	발생일자 VARCHAR(30),
+	시도본부소방서센터명 VARCHAR(100)
+)
+
+CREATE TABLE cart(
+	cart_id INT AUTO_INCREMENT,
+	member_id INT,
+	reg_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	update_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	PRIMARY KEY(cart_id),
+	FOREIGN KEY(member_id) REFERENCES member(member_id)
+)
